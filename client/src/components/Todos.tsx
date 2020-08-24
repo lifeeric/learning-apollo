@@ -17,6 +17,8 @@ export const TODO_DATA_FRAGMENT = gql`
 
 const TODOS_QUERY = gql`
   {
+    visibilityFilter @client
+
     todos {
       ...TodoItem
     }
@@ -35,6 +37,7 @@ export const Todos: React.FC = () => {
       {data.todos.map((todo: any) => (
         <Todo key={todo.id} {...todo} />
       ))}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
 };

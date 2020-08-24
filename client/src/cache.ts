@@ -6,10 +6,21 @@ export const cache = new InMemoryCache({
       fields: {
         text: {
           read(text) {
-            return text.replace('todo', 'corgi');
+            return text.replace("todo", "corgi");
+          },
+        },
+      },
+    },
+    Query: {
+      fields: {
+        visibilityFilter: {
+          read() {
+            return visibilityFilterVar();
           },
         },
       },
     },
   },
 });
+
+export const visibilityFilterVar: any = cache.makeVar("active");
